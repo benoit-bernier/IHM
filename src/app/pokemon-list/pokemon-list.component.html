@@ -1,0 +1,10 @@
+<div class = container>
+<main class="deals">
+  <article *ngFor="let pokemon of mPokemonList" (click) = "openDialog(pokemon)">
+    <h1>{{pokemon.id}} | {{pokemon.name | uppercase}}</h1>
+  
+    <img src={{pokemon.sprites.front_default}} width="150" height="auto" alt="Photo of {{pokemon.name}}">
+  </article>
+</main>
+</div>
+<button mat-raised-button (click)="getPokemons()">Charger plus</button>

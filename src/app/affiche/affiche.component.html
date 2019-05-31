@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>{{mPok.name | uppercase}}</h1>
+<div mat-dialog-content>
+
+  <div *ngIf="mPok.sprites; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <!-- Ne fonctionne pas
+      <mdb-carousel [isControls]="false" [animation]="'slide'">
+          <mdb-carousel-item>
+            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(130).jpg" alt="First slide">
+          </mdb-carousel-item>
+          <mdb-carousel-item>
+            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(129).jpg" alt="Second slide">
+          </mdb-carousel-item>
+          <mdb-carousel-item>
+            <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(70).jpg" alt="Third slide">
+          </mdb-carousel-item>
+        </mdb-carousel>
+    -->
+      
+    <img src={{mPok.sprites.front_default}} width="100%" height="auto" alt="Photo of {{mPok.name}}">
+    <div *ngFor="let mStat of mPok.stats | keyvalue">
+      <h4>{{mStat.key | uppercase}}</h4>
+      <mat-progress-bar [mode]="determinate" [value]="mStat.value">
+      </mat-progress-bar>
+    </div class = "types">
+    <div *ngFor="let mType of mPok.types">
+      <img src="assets/types/{{mType}}.png" width="50px">
+    </div>
+    <div class="poids-taille">
+      <div>
+          <img src="assets/icons/height.png" width="30px">
+          <p>{{mPok.height}}</p> <!-- Ajouter un pipe pour le poids ? -->
+      </div>
+      <div>
+          <img src="assets/icons/weight-scale.png" width="30px">
+          <p>{{mPok.weight}}</p> <!-- Ajouter un pipe pour le poids ? -->
+      </div>
+    </div>
+
+  </ng-template>
+  <ng-template #elseBlock>
+    <mat-spinner></mat-spinner>
+  </ng-template>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+</div>

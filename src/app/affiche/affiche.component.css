@@ -1,7 +1,30 @@
-.types{
-
+.sprites {
+    display: block;
+    width: 60%;
+  }
+  .middle{
+      vertical-align: middle;
+  }
+  .center{
+      text-align: center;
+  }
+  .centerImage{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .mat-dialog-actions {
+    justify-content: flex-end;
 }
 
-.poids-taille{
-    
+@supports (display: grid) {
+    main {
+      max-width: none;
+      margin: 0; }
+    article {
+      margin: 0; }
+    main {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-gap: 1rem; } 
 }
+  

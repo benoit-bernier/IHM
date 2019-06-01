@@ -16,6 +16,10 @@ export class AfficheComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<AfficheComponent>,
     @Inject(MAT_DIALOG_DATA) public mPok: Pokemon, private service : ApiGetterService) { }
 
+    onNoClick(): void {
+      this.dialogRef.close();
+    }
+  
   ngOnInit() {
     if (!this.mPok.stats){
       this.service.getPokemon(this.mPok.name).subscribe(
@@ -30,6 +34,7 @@ export class AfficheComponent implements OnInit {
           mPoke.species = e.species;
           mPoke.sprites = e.sprites;
           mPoke.url = this.mPok.url;
+          mPoke.types=[];
           e.types.forEach(mType => {
             mPoke.types.push(mType.type.name)
           });

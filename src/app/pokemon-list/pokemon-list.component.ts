@@ -19,7 +19,7 @@ export class PokemonListComponent implements OnInit {
 
   openDialog(selectedPokemon : Pokemon): void {
     const dialogRef = this.dialog.open(AfficheComponent, {
-      width: '250px',
+      width: '80%',
       data: selectedPokemon
     });
 
@@ -44,7 +44,10 @@ export class PokemonListComponent implements OnInit {
             mPoke.species = e.species;
             mPoke.sprites = e.sprites;
             mPoke.url = element.url;
-            mPoke.types = e.types;
+            mPoke.types=[];
+            e.types.forEach(mType => {
+              mPoke.types.push(mType.type.name)
+            });
             mPoke.stats = new Map<string, number>();
             e.stats.forEach(mStat => {
               mPoke.stats.set(mStat.stat.name, mStat.base_stat);

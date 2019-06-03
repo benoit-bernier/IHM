@@ -32,7 +32,7 @@ export class MyComponentComponent implements OnInit {
 
   openDialog(): void {
     const dialogRef = this.dialog.open(AfficheComponent, {
-      width: '250px',
+      width: '80%',
       data: this.selectedPokemon
     });
 
